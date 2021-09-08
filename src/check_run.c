@@ -29,6 +29,10 @@
 #include <signal.h>
 #include <setjmp.h>
 
+#ifdef __FreeBSD__
+#include <sys/wait.h>  /* FreeBSD needs WIF*(status) definitions */
+#endif
+
 #include "check.h"
 #include "check_error.h"
 #include "check_list.h"
