@@ -490,6 +490,18 @@ static TestResult *tcase_run_tfun_fork(SRunner * sr, TCase * tc, TF * tfun,
         eprintf("Error in call to fork:", __FILE__, __LINE__ - 2);
     if(pid == 0)
     {
+	    #if !defined(WIN32) && !defined(__linux__)
+/* Patch for OSX */
+char fn[256];
+int fd1, fd2;
+sprintf(fn, "%s.stdout", srunner_log_fname(sr));
+fd1 = open(fn, O_WRONLY|O_CREAT, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
+dup2(fd1, 1);
+sprintf(fn, "%s.stderr", srunner_log_fname(sr));
+fd2 = open(fn, O_WRONLY|O_CREAT, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
+dup2(fd2, 2);	    
+	    #endif
+	    
         setpgid(0, 0);
         group_pid = getpgrp();
         tr = tcase_run_checked_setup(sr, tc);
