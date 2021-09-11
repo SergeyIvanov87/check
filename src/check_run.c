@@ -492,7 +492,7 @@ static TestResult *tcase_run_tfun_fork(SRunner * sr, TCase * tc, TF * tfun,
         eprintf("Error in call to fork:", __FILE__, __LINE__ - 2);
     if(pid == 0)
     {
-	    #if !defined(WIN32) && !defined(__linux__)
+	    #if defined(CHECK_REQUIRE_STDOUT_PATCH)
 /* Patch for OSX */
 char fn[256];
 int fd1, fd2;
