@@ -1,8 +1,6 @@
 # About Check
 
-[![Travis Build Status](https://travis-ci.org/libcheck/check.svg?branch=master)](https://travis-ci.org/libcheck/check)
-[![Appveyor Build Status](https://ci.appveyor.com/api/projects/status/github/libcheck/check?svg=true)](https://ci.appveyor.com/project/libcheck/check/branch/master)
-
+[![Travis Build Status](https://api.travis-ci.com/civetweb/check.svg?branch=master)](https://app.travis-ci.com/github/civetweb/check)
 
 Check is a unit testing framework for C. It features a simple interface
 for defining unit tests, putting little in the way of the
